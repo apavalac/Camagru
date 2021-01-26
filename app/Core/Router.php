@@ -3,7 +3,13 @@
 namespace Camagru\Core;
 
 class Router {
-    function __construct() {
-        echo 'Created';
+    private array $routeMap;
+    private array $routePatern = [
+        'integer' => '\d',
+        'string' => '\w'
+    ];
+
+    function __construct(array $routes) {
+        $this->routeMap = $routes;
     }
 }

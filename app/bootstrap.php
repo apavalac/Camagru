@@ -1,5 +1,7 @@
 <?php
 
+require_once './app/config/config.php';
+
 function autoloader($className) {
     $indexSlash = strpos($className, '\\');
     $classSemiPath = substr($className, $indexSlash + 1);
