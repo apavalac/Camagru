@@ -1,0 +1,20 @@
+[
+  {
+    "GET": {
+      "/home": {
+        "controller": "HomeController",
+        "method": "index"
+      },
+      "/gallery": {
+        "controller": "GaleryController",
+        "method": "index"
+      }
+    },
+    "POST": {
+      "register": {
+        "controller": "UserController",
+        "method": "register"
+      }
+    }
+  }
+]
