@@ -2,6 +2,8 @@
 
 require_once './app/config/config.php';
 
+use \Camagru\Core\Request;
+
 function autoloader($className) {
     $indexSlash = strpos($className, '\\');
     $classSemiPath = substr($className, $indexSlash + 1);
@@ -11,3 +13,11 @@ function autoloader($className) {
 }
 
 spl_autoload_register('autoloader');
+
+require_once './app/config/routes.php';
+
+$request = new Request();
+
+if (!empty($router)) {
+    $router->route($request);
+}
