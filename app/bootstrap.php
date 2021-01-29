@@ -2,7 +2,8 @@
 
 require_once './app/config/config.php';
 
-use \Camagru\Core\Request;
+use Camagru\Core\Request;
+use Camagru\Core\Database;
 
 function autoloader($className) {
     $indexSlash = strpos($className, '\\');
@@ -15,6 +16,8 @@ function autoloader($className) {
 spl_autoload_register('autoloader');
 
 require_once './app/config/routes.php';
+
+$db = Database::getInstance();
 
 $request = new Request();
 

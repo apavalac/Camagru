@@ -36,7 +36,13 @@ class Router {
     public function route(Request $request) {
         $route = $this->matchRoute($request->getPath(), $request->getMethod());
 
-        print_r($route);
+        if ($route != null) {
+            call_user_func_array(['Camagru\Controllers\\' . $route['controller'], $route['method']], [$route['options']]);
+        } else {
+            call_user_func_array(['Camagru\Controllers\HomeController', 'index'], [[
+                'auth' => 'false'
+            ]]);
+        }
     }
 
     private function matchRoute(string $pathToMatch, string $method) {

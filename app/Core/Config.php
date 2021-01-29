@@ -5,10 +5,9 @@ namespace Camagru\Core;
 class Config {
     private static ?Config $instance = null;
     private array $data = [];
-    private array $routes = [];
 
     private function __construct() {
-        $this->routes = json_decode(file_get_contents('./app/config/routes.json'), true);
+        $this->data = json_decode(file_get_contents(PROJECT_PATH . '/app/config/database.json'), true);
     }
 
     public static function getInstance() : Config {
@@ -19,8 +18,14 @@ class Config {
         return self::$instance;
     }
 
-    public function getRoutes() : array {
-        return ($this->routes);
+    public function get($key) {
+        foreach ($this->data as $k => $value) {
+            if (isset($value[$key])) {
+                return $value[$key];
+            }
+        }
+
+        return null;
     }
 
 }
