@@ -5,6 +5,8 @@ require_once './app/config/config.php';
 use Camagru\Core\Request;
 use Camagru\Core\Database;
 
+define('PROJECT_PATH', __DIR__);
+
 function autoloader($className) {
     $indexSlash = strpos($className, '\\');
     $classSemiPath = substr($className, $indexSlash + 1);

@@ -7,7 +7,7 @@ class Config {
     private array $data = [];
 
     private function __construct() {
-        $this->data = json_decode(file_get_contents(PROJECT_PATH . '/app/config/database.json'), true);
+        $this->data = json_decode(file_get_contents(PROJECT_PATH . '/config/database.json'), true);
     }
 
     public static function getInstance() : Config {

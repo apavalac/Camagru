@@ -37,7 +37,8 @@ class Router {
         $route = $this->matchRoute($request->getPath(), $request->getMethod());
 
         if ($route != null) {
-            call_user_func_array(['Camagru\Controllers\\' . $route['controller'], $route['method']], [$route['options']]);
+            $controller = new ('Camagru\Controllers\\' . $route['controller'])();
+            call_user_func_array([$controller, $route['method']], [$route['options']]);
         } else {
             call_user_func_array(['Camagru\Controllers\HomeController', 'index'], [[
                 'auth' => 'false'
