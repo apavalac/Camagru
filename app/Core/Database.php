@@ -20,8 +20,10 @@ class Database
         $db_name = Config::getInstance()->get('db_name');
         $db_user = Config::getInstance()->get('db_user');
         $db_pass = Config::getInstance()->get('db_pass');
+        $db_host = Config::getInstance()->get('db_host');
+        $db_port = Config::getInstance()->get('db_port');
 
-        $dsn = 'mysql:dbname=' . $db_name . ';host=127.0.0.1';
+        $dsn = 'mysql:dbname=' . $db_name . ';host=' . $db_host . ';port=' . $db_port;
 
         try {
             $this->dbh = new PDO($dsn, $db_user, $db_pass);

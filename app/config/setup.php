@@ -4,8 +4,9 @@ define('DB_NAME', 'camagru');
 define('DB_USER', 'root');
 define('DB_PASS', 'vtm9YdgjH');
 define('DB_HOST', '127.0.0.1');
+define('DB_PORT', '33066');
 
-$dsn  = 'mysql:dbname=' . DB_NAME . ';host=' . DB_HOST;
+$dsn  = 'mysql:dbname=' . DB_NAME . ';host=' . DB_HOST . ';port=' . DB_PORT;
 
 try {
     $dbh = new PDO($dsn, DB_USER, DB_PASS);
