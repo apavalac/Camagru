@@ -1,32 +1,15 @@
-const express = require('express');
-const dotenv = require('dotenv');
+const http = require('http');
 
-const app = express();
-dotenv.config();
+const requestListener = function (req, res) {
+    res.write('HelloWorld');
+    res.end();
+}
 
-// set the view engine to ejs
-app.set('view engine', 'ejs');
+const listeningListener = function () {
+    console.log('started listening on port ', port);
+}
 
-// Index page
-app.get('/', (req, res) => {
-	let mascots = [
-		{ name: 'Andrei', birth_year: 2012 },
-		{ name: 'Ion', birth_year: 2001 },
-	];
+const server = http.createServer(requestListener);
 
-	let tagline = 'No programming concept is complete without a cute animal mascot';
-
-	res.render('pages/index', {
-		mascots: mascots,
-		tagline: tagline,
-	});
-})
-
-// About page
-app.get('/about', (req, res) => {
-	res.render('pages/about');
-})
-
-app.listen(process.env.SERVER_PORT, () => {
-	console.log('Server listen on ', process.env.SERVER_PORT);
-});
+const port = Number.parseInt(process.env.PORT) || 3000;
+server.listen(port, listeningListener);
